@@ -15,8 +15,9 @@ mongoose.connect(process.env.MONGODB_URL)
 .then(()=> console.log('MongoDB Connected'))
 .catch((error)=>console.log(`Error connecting to DB ${error}`));
 
+const clientUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, "") : "";
 const corsConfig = {
-    origin: process.env.CLIENT_URL,
+    origin: [clientUrl, `${clientUrl}/`],
     credentials: true
 };
 app.use(cors(corsConfig));
@@ -25,8 +26,9 @@ const ourServer = http.createServer(app);
 
 const io = new Server(ourServer, {
     cors: {
-        origin: process.env.CLIENT_URL,
+        origin: [clientUrl, `${clientUrl}/`],
         methods: ["GET", "POST", "DELETE","UPDATE"],
+        credentials: true
     }
 });
 
