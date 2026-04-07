@@ -81,6 +81,10 @@ const roomController = {
             const questions = await Questions.find({ roomCode: code});
             if (questions.length === 0) return response.json([]);
 
+            if(!process.env.GEMINI_API_KEY) {
+                return response.status(400).json({message: 'Gemini API Key is missing on the server.'});
+            }
+
             const topQuestions = await callGemini(questions);
             response.json(topQuestions);
         }catch(error){
