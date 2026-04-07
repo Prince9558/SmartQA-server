@@ -13,8 +13,8 @@ const callGemini = async (questions) => {
     Respond with only the summarized list, one per line.
     `;
 
-    console.log(process.env.GEMINI_API_KEY);
-    const url= "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+    console.log("Using API Key:", process.env.GEMINI_API_KEY ? "Yes" : "No");
+    const url= `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
     const requestBody= {
         contents: [{
             parts: [{ text: prompt}]
@@ -22,8 +22,7 @@ const callGemini = async (questions) => {
     };
     const requestHeaders = {
         headers: {
-        "Content-Type": "application/json",
-        "X-goog-api-key": process.env.GEMINI_API_KEY
+        "Content-Type": "application/json"
         }
     };
 
