@@ -88,8 +88,9 @@ const roomController = {
             const topQuestions = await callGemini(questions);
             response.json(topQuestions);
         }catch(error){
-            console.log(error);
-            response.status(500).json({message: 'Internal server error'});
+            console.log("Full error details:", error?.response?.data || error);
+            const apiErrorMsg = error?.response?.data?.error?.message;
+            response.status(500).json({message: apiErrorMsg ? `Google API Error: ${apiErrorMsg}` : 'Internal server error'});
         }
     },
 };
