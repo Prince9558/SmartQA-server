@@ -49,6 +49,9 @@ app.set("io", io);
 
 app.use('/room',roomRoutes);
 
+const authRoutes = require('./src/routes/authRoutes');
+app.use('/api/auth', authRoutes);
+
 // start the server
 const PORT = process.env.PORT || 5001;
 ourServer.listen(PORT,(error)=>{

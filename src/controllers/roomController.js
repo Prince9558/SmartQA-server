@@ -1,7 +1,5 @@
 const Rooms = require("../models/Rooms");
 const Questions = require("../models/Questions");
-const { request } = require("express");
-const { callGemini } = require("../services/geminiService");
 
 const roomController = {
     createRoom: async(request, response ) => {
@@ -73,6 +71,8 @@ const roomController = {
             response.status(500).json({ message: 'Internal server error '});
         }
     },
+<<<<<<< Updated upstream
+=======
 
     generateTopQuestions: async (request, response) => {
         try{
@@ -93,6 +93,7 @@ const roomController = {
             response.status(500).json({message: apiErrorMsg ? `Google API Error: ${apiErrorMsg}` : 'Internal server error'});
         }
     },
+>>>>>>> Stashed changes
 };
 
 module.exports = roomController;

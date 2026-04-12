@@ -11,10 +11,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "axios": "^1.10.0",
+<<<<<<< Updated upstream
+=======
+    "axios": "^1.15.0",
+>>>>>>> Stashed changes
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.16.3",
     "socket.io": "^4.8.1"
   }
